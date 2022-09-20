@@ -1,6 +1,6 @@
 // ./src/models/MongoModel.ts
-import { isValidObjectId, Model } from 'mongoose'
-import {IModel} from '../interfaces/IModel';
+import { isValidObjectId, Model } from 'mongoose';
+import { IModel } from '../interfaces/IModel';
 
 abstract class MongoModel<T> implements IModel<T> {
   // atributos...
