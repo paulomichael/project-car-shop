@@ -1,10 +1,5 @@
-import { vehicleZodSchema } from './IVehicle'
-
-// export interface ICar extends IVehicle {
-
-// }
-
 import { z } from 'zod';
+import { vehicleZodSchema } from './IVehicle';
 
 const carZodSchema = vehicleZodSchema.extend({
   doorsQty: z.number().min(2).max(4),
