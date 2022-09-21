@@ -2,8 +2,6 @@ import { Router, Request, Response } from 'express';
 import CarController from '../controllers/carController';
 import CarModel from '../models/carModel';
 import CarService from '../services/carService';
-// import verifyCarInput from '../middlewares/verifyCarInput.js';
-// import verifyCarInput from '../middlewares';
 
 const route = Router();
 
@@ -13,10 +11,6 @@ const carController = new CarController(carService);
 
 // route.get('/car/:id', (req, res) => carController.readOne(req, res));
 // route.get('/cars', (req, res) => carController.readOne(req, res));
-route.post(
-  '/',
-  // verifyCarInput, 
-  (req: Request, res: Response) => carController.create(req, res),
-);
+route.post('/', (req: Request, res: Response) => carController.create(req, res));
 
 export default route;
