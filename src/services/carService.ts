@@ -15,6 +15,14 @@ class CarService {
     }
     return this._car.create(obj);
   }
+
+  public async read(): Promise<ICar[]> {
+    // const parsed = carZodSchema.safeParse(obj);
+    // if (!parsed.success) {
+    //   throw parsed.error;
+    // }
+    return this._car.read();
+  }
 }
 
 export default CarService;
