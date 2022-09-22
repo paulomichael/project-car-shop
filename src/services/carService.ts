@@ -47,7 +47,6 @@ class CarService {
       // throw new Error(ErrorTypes.EntityNotFound); 
       throw new Error(ErrorTypes.ObjectNotFound); 
     }
-    console.log('=====> car: ', car);
 
     return car; // Isn't returning a successful update
   }

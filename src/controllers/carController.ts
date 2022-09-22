@@ -37,9 +37,10 @@ class CarController {
     res: Response,
   ) {
     const { id } = req.params;
-    const { model, year, color, buyValue, seatsQty, doorsQty } = req.body;
-    const car = { model, year, color, buyValue, seatsQty, doorsQty };
-    const results = await this._service.update(id, car);
+    // const { model, year, color, buyValue, seatsQty, doorsQty } = req.body;
+    // const car = { model, year, color, buyValue, seatsQty, doorsQty };
+    // const results = await this._service.update(id, car);
+    const results = await this._service.update(id, req.body);
     return res.status(200).json(results);
   }
 
