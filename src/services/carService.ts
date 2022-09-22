@@ -42,18 +42,17 @@ class CarService {
     if (carExists) {
       car = await this._car.update(id, obj);
     }
-    console.log('-------> car: ', car);
+    // console.log('-------> car: ', car);
     if (!car) {
       // throw new Error(ErrorTypes.EntityNotFound); 
       throw new Error(ErrorTypes.ObjectNotFound); 
     }
 
-    return car; // Isn't returning a successful update
+    return car; 
   }
 
   public async delete(id: string): Promise<ICar | null> {
     const car = await this._car.delete(id);
-    // console.log('=====> car: ', car);
     if (!car) {
       // throw new Error(ErrorTypes.EntityNotFound); 
       throw new Error(ErrorTypes.ObjectNotFound); 
