@@ -31,6 +31,26 @@ class CarController {
     const results = await this._service.readOne(id);
     return res.status(200).json(results);
   }
+
+  public async update(
+    req: Request & { body: ICar },
+    res: Response,
+  ) {
+    const { id } = req.params;
+    const { model, year, color, buyValue, seatsQty, doorsQty } = req.body;
+    const car = { model, year, color, buyValue, seatsQty, doorsQty };
+    const results = await this._service.update(id, car);
+    return res.status(200).json(results);
+  }
+
+  public async delete(
+    req: Request & { body: ICar },
+    res: Response,
+  ) {
+    const { id } = req.params;
+    const results = await this._service.delete(id);
+    return res.status(204).json(results);
+  }
 }
 
 export default CarController;
