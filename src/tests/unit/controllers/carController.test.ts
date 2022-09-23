@@ -56,44 +56,43 @@ describe('Car Controller', () => {
     });
   });
 
-  // describe('Read Car', () => {
-  //   it('Success', async () => {
-  //     sinon.stub(carService, 'read').resolves();
-  //     res.status = sinon.stub().returns(res);
-  //     res.json = sinon.stub().returns(res);
-  //     await carController.read(req, res);
-  //     expect((res.status as sinon.SinonStub).calledWith(201)).to.be.true;
-  //     // expect((res.json as sinon.SinonStub).calledWith(carMock)).to.be.true;
-  //     sinon.restore()
+  describe('Read Car', () => {
+    it('Success', async () => {
+      sinon.stub(carService, 'read').resolves([carMock]);
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns(res);
+      await carController.read(req, res);
+      expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
+      // expect((res.json as sinon.SinonStub).calledWith(carMock)).to.be.true;
+      sinon.restore()
 
-  //   });
-  // });
+    });
+  });
 
-  // describe('Delete Car', () => {
-  //   it('Success', async () => {
-  //     sinon.stub(carService, 'delete').resolves(null);
-  //     res.status = sinon.stub().returns(res);
-  //     res.json = sinon.stub().returns(res);
-  //     req.params = { id: 'test' };
-  //     await carController.delete(req, res);
-  //     expect((res.status as sinon.SinonStub).calledWith(201)).to.be.true;
-  //     // expect((res.json as sinon.SinonStub).calledWith(carMock)).to.be.true;
-  //     sinon.restore()
+  describe('Delete Car', () => {
+    it('Success', async () => {
+      sinon.stub(carService, 'delete').resolves(carMock);
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns(res);
+      req.params = { id: '1' };
+      await carController.delete(req, res);
+      expect((res.status as sinon.SinonStub).calledWith(204)).to.be.true;
+      // expect((res.json as sinon.SinonStub).calledWith(carMock)).to.be.true;
+      sinon.restore()
 
-  //   });
-  // });
+    });
+  });
 
-  // describe('ReadOne Car', () => {
-  //   it('Success', async () => {
-  //     sinon.stub(carService, 'readOne').resolves(carMock);
-  //     res.status = sinon.stub().returns(res);
-  //     res.json = sinon.stub().returns(res);
-  //     req.params = { id: 'identifier' };
-  //     await carController.readOne(req, res);
-
-  //     expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
-  //     // expect((res.json as sinon.SinonStub).calledWith(carMock)).to.be.true;
-  //     sinon.restore()
-  //   });
-  // });
+  describe('ReadOne Car', () => {
+    it('Success', async () => {
+      sinon.stub(carService, 'readOne').resolves(carMock);
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns(res);
+      req.params = { id: '1' };
+      await carController.readOne(req, res);
+      expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
+      // expect((res.json as sinon.SinonStub).calledWith(carMock)).to.be.true;
+      sinon.restore()
+    });
+  });
 });
