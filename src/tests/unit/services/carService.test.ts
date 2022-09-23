@@ -29,12 +29,10 @@ describe('Car Service', () => {
   };
 
 	before(() => {
-		sinon.stub(carModel, 'create').resolves(carMockWithId);
-		sinon.stub(carModel, 'readOne')
-      // na chamada de index 0 `carModel.readOne` vai responder um fakeFrame
-			.onCall(0).resolves(carMockWithId) 
-      // já na próxima chamada ele vai mudar seu retorno, isso pode ser feito várias vezes
-			.onCall(1).resolves(null); 
+		sinon.stub(carModel, 'create').resolves(carMock);
+		sinon.stub(carModel, 'read').resolves([carMock])
+			// .onCall(0).resolves(carMockWithId) 
+			// .onCall(1).resolves(null); 
 	})
 	after(() => {
 		sinon.restore()
@@ -43,21 +41,21 @@ describe('Car Service', () => {
 		it('Success', async () => {
 			const carCreated = await carService.create(carMock);
 
-			expect(carCreated).to.be.deep.equal(carMockWithId);
+			expect(carCreated).to.be.equal(carMock);
 		});
 
-		it('Failure', async () => {
-			let error;
-			try {
-				// await carService.create({});
-				await carService.create(carMock);
-			} catch (err) {
-				error = err
-			}
+		// it('Failure', async () => {
+		// 	let error;
+		// 	try {
+		// 		// await carService.create({});
+		// 		await carService.create(carMock);
+		// 	} catch (err) {
+		// 		error = err
+		// 	}
 
-			// expect(error).to.be.instanceOf(ZodError);
-			expect(error).to.be.equal(undefined);
-		});
+		// 	// expect(error).to.be.instanceOf(ZodError);
+		// 	expect(error).to.be.equal(undefined);
+		// });
 	});
 
 	// describe('ReadOne Car', () => {
